@@ -5,7 +5,10 @@ enum Fruit {
   KIWI = 'kiwi',
   APPLE = 'apple'
 }
-const fruitBasket = {
+
+type FruitBasket = { [key in Fruit]: number };
+
+const fruitBasket: FruitBasket = {
   banana: 2,
   orange: 3,
   kiwi: 2,
@@ -13,9 +16,12 @@ const fruitBasket = {
 };
 
 // 2. Add typings/access modifiers to the Person class
+
+type Gender = 'male' | 'femLe';
+
 class Person {
   private name: string;
-  private gender: string;
+  private gender: Gender;
   private age: number;
   private likes: number[];
   public constructor(name, gender, age, likes) {
@@ -40,7 +46,7 @@ const Dima = new Person('Dima', 'male', 22, ['video games', 'martial arts']);
 // 3. Add typings/access modifiers to MovieService class
 class MovieService {
   private logger: LoggerOne | LoggerTwo;
-  constructor(logger) {
+  public constructor(logger) {
     this.logger = logger;
   }
   public getMovies() {
@@ -63,5 +69,4 @@ class LoggerTwo {
 }
 
 const movieService1 = new MovieService(new LoggerOne());
-movieService1.getMovies();
 const movieService2 = new MovieService(new LoggerTwo());
